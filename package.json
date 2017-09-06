@@ -1,0 +1,33 @@
+{
+  "name": "thoughttyper",
+  "version": "1.0.0",
+  "description": "It comverts your thoughts to word",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vverma508/ThoughtTyper.git"
+  },
+  "keywords": [
+    "blog",
+    "write",
+    "note",
+    "read",
+    "story"
+  ],
+  "author": "Vivek Verma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vverma508/ThoughtTyper/issues"
+  },
+  "homepage": "https://github.com/vverma508/ThoughtTyper#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "mongodb": "^2.2.31"
+  }
+}
