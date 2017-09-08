@@ -9,6 +9,7 @@ mongoCLient.connect(dbUrl, function(err, db) {
     if (err != null) {
         console.log("Error while connecting to DB. Error msg: " + err.message);
         db.close();
+
     } else {
         database = db;
         console.log("Database is online!");
@@ -27,7 +28,7 @@ exports.register = function(username, password) {
     return true;
 }
 
-exports.login = function(res, username, password) {
+exports.login = function(req, res, username, password) {
 
     var TTUsers = database.collection("TTUsers");
 
@@ -38,8 +39,12 @@ exports.login = function(res, username, password) {
 
                 var result = bcrypt.compareSync(password, items[0].password);
                 if (result) {
+                    var TTSrories = database.collection("TTStroies");
 
-                    res.send("Login successfull!");
+                    TTSrories.find().sort({ createdon: -1 }).toArray(function(err, sitems) {
+                        res.render('stories.handlebars', { username: req.session.newuser, stories: sitems });
+                    });
+
                 } else {
                     res.render('login.handlebars', { err: "Invalid user credentials!" })
                 }
@@ -49,5 +54,23 @@ exports.login = function(res, username, password) {
             }
         }
     });
+
+}
+
+exports.savestory = function(req, res) {
+
+    if (req.session.newuser) {
+
+        var TTStories = database.collection("TTStroies");
+        var d = new Date();
+        TTStories.insertOne({ "Title": req.body.title, "story": req.body.content, "author": req.session.newuser, "createdon": d });
+        var TTSrories = database.collection("TTStroies");
+
+        TTSrories.find().sort({ createdon: -1 }).toArray(function(err, sitems) {
+            res.render('stories.handlebars', { username: req.session.newuser, stories: sitems });
+        });
+    } else {
+        res.render('login.handlebars', { err: "Login to continue!" })
+    }
 
 }

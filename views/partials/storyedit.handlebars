@@ -1,0 +1,36 @@
+<script>
+ $(document).ready(function() {
+        $('#storyContent').summernote({
+          height:250,
+          toolbar: [
+
+         ['style', ['bold', 'italic', 'underline', 'clear']],
+         ['font', ['strikethrough', 'superscript', 'subscript']],
+         ['fontsize', ['fontsize']],
+         ['color', ['color']],
+         ['para', ['ul', 'ol', 'paragraph']],
+         ['height', ['height']],
+         ['link', ['linkDialogShow', 'unlink']],
+         ['table', ['table']]
+
+                 ]
+        });
+    });
+  
+  </script>
+
+<div class="row" id="storyEdit">
+   <div class="row">
+<form method="post" action="/createstory">
+       <input id='titleTxt' type="text" placeholder="Enter story title" name="title" class="form-control input-lg"></input>
+       <textarea id="storyContent" name="content" rows="8" style='display:none'></textarea>
+       
+       <input id="save" type="submit" value="create"/>
+        <input id="cancle" type="button" value="cancle"/>
+</form>
+   </div>
+
+   <div class="row" id="preview">
+
+   </div>
+</div>
