@@ -74,3 +74,11 @@ exports.savestory = function(req, res) {
     }
 
 }
+
+exports.stories = function() {
+    var TTSrories = database.collection("TTStroies");
+
+    TTSrories.find().sort({ createdon: -1 }).toArray(function(err, sitems) {
+        res.render('stories.handlebars', { username: req.session.newuser, stories: sitems });
+    });
+}

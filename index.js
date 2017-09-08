@@ -17,7 +17,7 @@ app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res) {
     if (req.session.newuser) {
-        res.render('stories.handlebars', { username: req.session.newuser });
+        router.sroties
     } else {
 
         res.render('login.handlebars', {});

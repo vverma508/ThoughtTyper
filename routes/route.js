@@ -25,3 +25,7 @@ exports.register = function(req, res) {
 exports.create = function(req, res) {
     var result = mongoClinet.savestory(req, res);
 };
+
+exports.sroties = function() {
+    mongoClinet.stories();
+};
