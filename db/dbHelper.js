@@ -75,7 +75,7 @@ exports.savestory = function(req, res) {
 
 }
 
-exports.stories = function() {
+exports.stories = function(req, res) {
     var TTSrories = database.collection("TTStroies");
 
     TTSrories.find().sort({ createdon: -1 }).toArray(function(err, sitems) {

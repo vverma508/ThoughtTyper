@@ -15,14 +15,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 
-app.get('/', function(req, res) {
-    if (req.session.newuser) {
-        router.sroties
-    } else {
-
-        res.render('login.handlebars', {});
-    }
-})
+app.get('/', router.sroties)
 
 app.get('/logout', function(req, res) {
     req.session.destroy();

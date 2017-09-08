@@ -26,6 +26,12 @@ exports.create = function(req, res) {
     var result = mongoClinet.savestory(req, res);
 };
 
-exports.sroties = function() {
-    mongoClinet.stories();
+exports.sroties = function(req, res) {
+    if (req.session.newuser) {
+        mongoClinet.stories(req, res);
+    } else {
+
+        res.render('login.handlebars', {});
+    }
+
 };
